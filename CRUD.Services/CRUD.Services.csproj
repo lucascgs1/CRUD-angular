@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CRUD.Data\CRUD.Data.csproj" />
+    <ProjectReference Include="..\CRUD.Model\CRUD.Model.csproj" />
+  </ItemGroup>
+
+</Project>
