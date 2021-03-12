@@ -36,6 +36,8 @@ namespace CRUD.Data
         public void Remove(long id)
         {
             DbSet.Remove(DbSet.Find(id));
+
+            Db.SaveChanges();
         }
 
         /// <summary>

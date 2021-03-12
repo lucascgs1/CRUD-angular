@@ -2,6 +2,14 @@
   <div class="col-12 col-md-10 titulo">
     <h4>Cliente</h4>
   </div>
+
+  <div class="col-12 col-md-2">
+    <button class="btn btn-danger btn-block" [swal]="{ title: 'Excluir', text: 'Deseja realmente exlcuir esse cliente?', showCancelButton: true, confirmButtonText: 'Sim',  cancelButtonText: 'Não'}" (confirm)="delete()">
+      Excluir
+    </button>
+  </div>
+
+
   <div class="col-12">
     <hr />
   </div>
@@ -39,37 +47,46 @@
 
     <div class="col-12 col-md-6 form-group">
       <label for="email" class="control-label">Email:</label>
-      <input type="email" class="form-control" formControlName="email" placeholder="cadastro@silph.com" [ngClass]="{'is-invalid': ((clienteForm.controls['email'].touched || isSubmited) && clienteForm.value.email == '')}">
-      <div *ngIf="(clienteForm.controls['email'].touched || isSubmited) && clienteForm.value.email == ''" class="invalid-feedback">
+      <input type="email" class="form-control" formControlName="email" placeholder="cadastro@silph.com" id="email" (change)="validateEmail($event)" [ngClass]="{'is-invalid': ((clienteForm.controls['email'].touched || isSubmited) && clienteForm.value.email == '' || isEmailValid)}">
+      <div *ngIf="(clienteForm.controls['email'].touched || isSubmited) && (clienteForm.value.email == '' || isEmailValid)" class="invalid-feedback">
         <div class="" *ngIf="clienteForm.controls['email'].errors != null && clienteForm.controls['email'].errors.required">
-          E-mail fantasia é obrigatório
+          E-mail é obrigatório
+        </div>
+        <div class="" *ngIf="(clienteForm.value.email != '' && isEmailValid)">
+          Insira um e-mail valido
         </div>
       </div>
     </div>
 
     <div class="col-12 col-md-6 form-group">
-      <label for="email" class="control-label">CNPJ:</label>
-      <!--<input type="email" class="form-control" formControlName="email" placeholder="Silph Corp">-->
-      <!--<div *ngIf="(clienteForm.controls['email'].touched || isSubmited) && clienteForm.value.email == ''" class="invalid-feedback">
-        <div class="" *ngIf="clienteForm.controls['email'].errors != null && clienteForm.controls['email'].errors.required">
-          Nome fantasia é obrigatório
+      <label for="cnpj" class="control-label">CNPJ:</label>
+      <input class="form-control" mask="00.000.000/0000-00" formControlName="cnpj" placeholder="12.345.678/123-00" [ngClass]="{'is-invalid': ((clienteForm.controls['cnpj'].touched || isSubmited) && clienteForm.value.cnpj == '' || clienteForm.value.cnpj.length < 18)}">
+      <div *ngIf="(clienteForm.controls['cnpj'].touched || isSubmited) && clienteForm.value.cnpj == ''" class="invalid-feedback">
+        <div class="" *ngIf="clienteForm.controls['cnpj'].errors != null && (clienteForm.controls['cnpj'].errors.required || clienteForm.value.cnpj.length < 18)">
+          cnpj é obrigatório
         </div>
-      </div>-->
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 form-group">
+      <label for="telefone" class="control-label">Telefone:</label>
+      <input class="form-control" mask="(00) 0000-0000||(00) 0 0000-0000" formControlName="telefone" placeholder="(11) 9 1234-5678" [ngClass]="{'is-invalid': ((clienteForm.controls['telefone'].touched || isSubmited) && clienteForm.value.telefone == '')}">
+      <div *ngIf="(clienteForm.controls['telefone'].touched || isSubmited) && clienteForm.value.telefone == ''" class="invalid-feedback">
+        <div class="" *ngIf="clienteForm.controls['telefone'].errors != null && clienteForm.controls['telefone'].errors.required">
+          Telefone é obrigatório
+        </div>
+      </div>
     </div>
   </div>
 
-
-
-
   <div class="row">
     <div class="col-12 col-md-3 offset-md-6 mb-1" routerLink="">
-      <div class="btn btn-danger btn-block">
+      <div class="btn btn-secondary btn-block">
         Cancelar
       </div>
     </div>
     <div class="col-12 col-md-3 mb-1">
       <button type="submit" class="btn btn-success btn-block">Salvar</button>
-      <!--[disabled]="clienteForm.status == 'INVALID' && clienteForm.touched"-->
     </div>
   </div>
 </form>

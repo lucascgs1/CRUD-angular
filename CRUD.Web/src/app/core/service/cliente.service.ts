@@ -46,7 +46,7 @@ export class ClienteService {
   }
 
 
-  postClienteById(cliente: Cliente): Observable<any> {
+  postCliente(cliente: Cliente): Observable<any> {
     var url = environment.endPoints.cliente;
 
     return this.httpClient.post(url, cliente, this.httpOptions)
@@ -56,7 +56,7 @@ export class ClienteService {
   }
 
 
-  putClienteById(cliente: Cliente): Observable<any> {
+  putCliente(cliente: Cliente): Observable<any> {
     var url = environment.endPoints.cliente;
 
     return this.httpClient.put(url, cliente, this.httpOptions)
