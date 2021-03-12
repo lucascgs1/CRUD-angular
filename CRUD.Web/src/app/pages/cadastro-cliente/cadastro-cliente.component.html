@@ -3,7 +3,7 @@
     <h4>Cliente</h4>
   </div>
 
-  <div class="col-12 col-md-2">
+  <div class="col-12 col-md-2" *ngIf="clienteId > 0">
     <button class="btn btn-danger btn-block" [swal]="{ title: 'Excluir', text: 'Deseja realmente exlcuir esse cliente?', showCancelButton: true, confirmButtonText: 'Sim',  cancelButtonText: 'Não'}" (confirm)="delete()">
       Excluir
     </button>
