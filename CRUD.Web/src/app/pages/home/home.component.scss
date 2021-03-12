@@ -1,0 +1,36 @@
+.titulo h4 {
+  font-size: 2em;
+  font-weight: 500;
+  padding-top: 2px;
+}
+
+.header-grid {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1em;
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.body-grid {
+  background-color: #ddebf7;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &.impar {
+    background-color: aliceblue !important;
+  }
+}

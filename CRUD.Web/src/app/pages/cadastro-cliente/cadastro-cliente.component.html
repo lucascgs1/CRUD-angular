@@ -1,0 +1,75 @@
+<div class="row mt-2">
+  <div class="col-12 col-md-10 titulo">
+    <h4>Cliente</h4>
+  </div>
+  <div class="col-12">
+    <hr />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+
+  </div>
+</div>
+
+
+<form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+
+  <div class="row">
+    <div class="col-12 col-md-6 form-group">
+      <label for="nomeFantasia" class="control-label">Nome Fantasia:</label>
+      <input type="text" class="form-control" formControlName="nomeFantasia" placeholder="Silph Co" [ngClass]="{'is-invalid': ((clienteForm.controls['nomeFantasia'].touched || isSubmited) && clienteForm.value.nomeFantasia == '')}">
+      <div *ngIf="(clienteForm.controls['nomeFantasia'].touched || isSubmited) && clienteForm.value.nomeFantasia == ''" class="invalid-feedback">
+        <div class="" *ngIf="clienteForm.controls['nomeFantasia'].errors != null && clienteForm.controls['nomeFantasia'].errors.required">
+          Nome fantasia é obrigatório
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 form-group">
+      <label for="razaoSocial" class="control-label">Razão social:</label>
+      <input type="text" class="form-control" formControlName="razaoSocial" placeholder="Silph Company" [ngClass]="{'is-invalid': ((clienteForm.controls['razaoSocial'].touched || isSubmited) && clienteForm.value.razaoSocial == '')}">
+      <div *ngIf="(clienteForm.controls['razaoSocial'].touched || isSubmited) && clienteForm.value.razaoSocial == ''" class="invalid-feedback">
+        <div class="" *ngIf="clienteForm.controls['razaoSocial'].errors != null && clienteForm.controls['razaoSocial'].errors.required">
+          Razão social é obrigatório
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 form-group">
+      <label for="email" class="control-label">Email:</label>
+      <input type="email" class="form-control" formControlName="email" placeholder="cadastro@silph.com" [ngClass]="{'is-invalid': ((clienteForm.controls['email'].touched || isSubmited) && clienteForm.value.email == '')}">
+      <div *ngIf="(clienteForm.controls['email'].touched || isSubmited) && clienteForm.value.email == ''" class="invalid-feedback">
+        <div class="" *ngIf="clienteForm.controls['email'].errors != null && clienteForm.controls['email'].errors.required">
+          E-mail fantasia é obrigatório
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 form-group">
+      <label for="email" class="control-label">CNPJ:</label>
+      <!--<input type="email" class="form-control" formControlName="email" placeholder="Silph Corp">-->
+      <!--<div *ngIf="(clienteForm.controls['email'].touched || isSubmited) && clienteForm.value.email == ''" class="invalid-feedback">
+        <div class="" *ngIf="clienteForm.controls['email'].errors != null && clienteForm.controls['email'].errors.required">
+          Nome fantasia é obrigatório
+        </div>
+      </div>-->
+    </div>
+  </div>
+
+
+
+
+  <div class="row">
+    <div class="col-12 col-md-3 offset-md-6 mb-1" routerLink="">
+      <div class="btn btn-danger btn-block">
+        Cancelar
+      </div>
+    </div>
+    <div class="col-12 col-md-3 mb-1">
+      <button type="submit" class="btn btn-success btn-block">Salvar</button>
+      <!--[disabled]="clienteForm.status == 'INVALID' && clienteForm.touched"-->
+    </div>
+  </div>
+</form>

@@ -1,0 +1,62 @@
+<div class="row mt-2">
+  <div class="col-12 col-md-10 titulo">
+    <h4>Cliente</h4>
+  </div>
+  <div class="col-12 col-md-2" routerLink="/cadastro-cliente">
+    <div class="btn btn-primary btn-block">
+      Novo
+    </div>
+  </div>
+  <div class="col-12">
+    <hr />
+  </div>
+</div>
+
+<div class="col-12">
+  <div class="row pb-2 pt-2 header-grid">
+    <div class="col-1">
+      <span>
+        Id
+      </span>
+    </div>
+    <div class="col-4">
+      <span>
+        Nome Fantasia
+      </span>
+    </div>
+    <div class="col-4">
+      <span>
+        E-mail
+      </span>
+    </div>
+    <div class="col-3">
+      <span>
+        Data cadastro
+      </span>
+    </div>
+  </div>
+  <div class="row pt-1 pb-2 body-grid " *ngFor="let item of clienteLst; index as i;" [ngClass]="{'impar': i % 2 == 0}" routerLink="/cadastro-cliente/{{item.id}}">
+    <div class="col-1">
+      <span>
+        {{item.id}}
+      </span>
+    </div>
+    <div class="col-4">
+      <span>
+        {{item.nomeFantasia}}
+      </span>
+    </div>
+    <div class="col-4">
+      <span>
+        {{item.cnpj}}
+      </span>
+    </div>
+    <div class="col-3">
+      <span>
+        {{item.dataCadastro | date: 'dd/MM/yyyy'}}
+      </span>
+    </div>
+  </div>
+</div>
+
+
